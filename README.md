@@ -15,6 +15,11 @@ Use the provided VSCode devcontainer to get an environment with the correct tool
 - Ensure you have a `~/.cabal/packages` folder. You can create this via `mkdir -p ~/.cabal/packages`; it's used to cache cabal packages.
 - Clone this repository and open it in VSCode
   - It will ask if you want to open it in the container, say yes.
+    - Note: For Windows users using VSCode/WSL/Docker, you may need to update the source file path of the cabal mount in .devcontainer/devcontainer.json followed by rebuilding the container: 
+      ```
+      "mounts": [
+        "source=ENTER YOUR LOCAL PATH HERE/.cabal/packages,target=/home/plutus/.cabal/packages,type=bind,consistency=cached",    ],
+      ```
   - The first time it will take a few minutes to download the devcontainer image from dockerhub,
   - `cabal build` from the terminal should work (unless you didn't have a `~/.cabal` folder, in which case you'll need to run `cabal update` first.)
   - Opening a Haskell file should give you IDE features (it takes a little while to set up the first time)
